@@ -1,45 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alkhawaja — Restaurant</title>
-  <meta name="description" content="Alkhawaja — säsongsbetonad medelhavsinspirerad mat." />
+  <title>Levant — Restaurang & Catering</title>
+  <meta name="description" content="Levant — Restaurang & Catering. Libanesisk / Syrisk / Irakisk / Svensk husmanskost." />
+
+  <!-- Fancy fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600;700;800&family=Parisienne&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0f14;
-      --panel:#101826;
-      --text:#e7edf6;
+      --bg:#070b10;
+      --panel:#0f1722;
+      --text:#edf2fb;
       --muted:#a8b3c7;
-      --brand:#ffcc66;
-      --brand2:#8ee6c5;
+      --gold:#f2cf73;
+      --gold2:#caa14a;
+      --jade:#8ee6c5;
       --line:rgba(255,255,255,.12);
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --shadow: 0 22px 65px rgba(0,0,0,.55);
+      --shadow2: 0 14px 38px rgba(0,0,0,.40);
       --radius:18px;
-      --max: 1100px;
+      --radius2:24px;
+      --max: 1120px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(255,204,102,.16), transparent 55%),
-        radial-gradient(900px 700px at 90% 10%, rgba(142,230,197,.14), transparent 60%),
-        linear-gradient(180deg, #070a0f, var(--bg) 40%);
+        radial-gradient(1200px 820px at 15% -10%, rgba(242,207,115,.18), transparent 60%),
+        radial-gradient(1000px 820px at 92% 8%, rgba(142,230,197,.13), transparent 62%),
+        radial-gradient(880px 760px at 70% 110%, rgba(122,168,255,.10), transparent 58%),
+        linear-gradient(180deg, #04070b, var(--bg) 40%);
       color:var(--text);
-      line-height:1.5;
+      line-height:1.55;
+      overflow-x:hidden;
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
+    /* Subtle fade-in */
+    @keyframes rise {
+      from {opacity:0; transform: translateY(14px)}
+      to   {opacity:1; transform: translateY(0)}
+    }
+    .reveal{animation: rise .7s ease both}
+
     /* Top bar */
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,20,.55);
+      backdrop-filter: blur(12px);
+      background: rgba(7,11,16,.62);
       border-bottom:1px solid var(--line);
     }
     .topbar{
@@ -48,18 +65,45 @@
       gap:14px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px; min-width: 220px;
-      font-weight:700; letter-spacing:.2px;
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
+      min-width: 220px;
     }
     .logo{
-      width:36px; height:36px; border-radius:12px;
-      background: conic-gradient(from 200deg, var(--brand), var(--brand2), #7aa8ff, var(--brand));
-      box-shadow: 0 10px 24px rgba(0,0,0,.35);
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(242,207,115,.95), rgba(242,207,115,.25) 38%, transparent 64%),
+        conic-gradient(from 210deg, rgba(242,207,115,.95), rgba(142,230,197,.35), rgba(122,168,255,.35), rgba(242,207,115,.95));
+      box-shadow: 0 12px 28px rgba(0,0,0,.45);
+      position:relative;
+      overflow:hidden;
     }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.35), transparent 55%);
+      transform: rotate(18deg);
+      opacity:.55;
+    }
+    .brand b{
+      font-family: Cinzel, serif;
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:.6px;
+    }
+    .brand small{
+      display:block;
+      color: rgba(242,207,115,.9);
+      font-family: Parisienne, cursive;
+      font-size:18px;
+      line-height:1;
+      margin-top:2px;
+    }
+
     nav{display:flex; align-items:center; gap:18px}
     nav a{
       color:var(--muted);
-      font-weight:600;
+      font-weight:700;
       padding:10px 10px;
       border-radius:12px;
       transition: .18s ease;
@@ -73,15 +117,16 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,.06);
       color:var(--text);
-      font-weight:700;
+      font-weight:800;
       transition:.18s ease;
       cursor:pointer;
       white-space:nowrap;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
     .btn.primary{
-      border-color: rgba(255,204,102,.35);
-      background: linear-gradient(135deg, rgba(255,204,102,.24), rgba(142,230,197,.16));
+      border-color: rgba(242,207,115,.38);
+      background: linear-gradient(135deg, rgba(242,207,115,.22), rgba(142,230,197,.12));
     }
     .burger{
       display:none;
@@ -95,50 +140,60 @@
     }
 
     /* Hero */
-    .hero{
-      padding:72px 0 26px;
-    }
+    .hero{ padding:68px 0 18px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:26px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
       align-items:stretch;
     }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow);
-    }
-    .hero-main{
-      padding:34px;
       position:relative;
       overflow:hidden;
     }
+    .card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      border-radius:inherit;
+      padding:1px;
+      background: linear-gradient(135deg, rgba(242,207,115,.35), rgba(142,230,197,.12), rgba(122,168,255,.10));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity:.6;
+      pointer-events:none;
+    }
+
+    .hero-main{ padding:34px; }
     .pill{
       display:inline-flex; align-items:center; gap:10px;
-      font-weight:700;
-      color: rgba(255,255,255,.9);
+      font-weight:800;
+      color: rgba(255,255,255,.92);
       background: rgba(255,255,255,.06);
       border:1px solid var(--line);
       padding:8px 12px;
       border-radius:999px;
       margin-bottom:16px;
     }
-    .dot{width:10px; height:10px; border-radius:99px; background: var(--brand)}
+    .dot{width:10px; height:10px; border-radius:99px; background: var(--gold)}
     h1{
       margin:0 0 12px;
-      font-size: clamp(34px, 4.2vw, 56px);
+      font-family: Cinzel, serif;
+      font-size: clamp(34px, 4.1vw, 58px);
       line-height:1.05;
-      letter-spacing:-.6px;
+      letter-spacing:-.4px;
     }
-    .lead{color:var(--muted); font-size: 18px; margin:0 0 18px; max-width: 52ch}
+    .lead{color:var(--muted); font-size: 18px; margin:0 0 18px; max-width: 58ch}
     .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
     .meta{
-      display:flex; gap:14px; flex-wrap:wrap;
+      display:flex; gap:12px; flex-wrap:wrap;
       margin-top:22px;
       color:var(--muted);
-      font-weight:600;
+      font-weight:700;
     }
     .meta span{
       display:inline-flex; gap:8px; align-items:center;
@@ -147,33 +202,30 @@
       border:1px solid var(--line);
       border-radius: 14px;
     }
-    .hero-main:before{
-      content:"";
-      position:absolute; inset:-140px -120px auto auto;
-      width:420px; height:420px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,204,102,.25), transparent 55%),
-                  radial-gradient(circle at 60% 60%, rgba(142,230,197,.18), transparent 60%);
-      filter: blur(2px);
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
 
     .hero-side{
-      padding:22px;
+      padding:18px;
       display:flex;
       flex-direction:column;
       gap:14px;
     }
     .photo{
-      border-radius: 16px;
+      border-radius: 18px;
       border:1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(255,204,102,.15), rgba(142,230,197,.08)),
-        url('https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1600&q=70');
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.35)),
+        url("WhatsApp%20Image%202026-02-10%20at%2012.51.48%281%29.jpeg");
       background-size: cover;
       background-position: center;
-      min-height: 220px;
-      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      min-height: 280px;
+      box-shadow: var(--shadow2);
+      position:relative;
+    }
+    .photo:after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(60% 45% at 25% 20%, rgba(242,207,115,.18), transparent 60%);
+      pointer-events:none;
     }
     .side-row{
       display:grid;
@@ -182,15 +234,16 @@
     }
     .mini{
       padding:16px;
-      border-radius:16px;
+      border-radius:18px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
     }
-    .mini h3{margin:0 0 6px; font-size:14px; color: rgba(255,255,255,.88); letter-spacing:.2px}
-    .mini p{margin:0; color:var(--muted); font-weight:600}
+    .mini h3{margin:0 0 6px; font-size:13px; color: rgba(255,255,255,.9); letter-spacing:.2px}
+    .mini p{margin:0; color:var(--muted); font-weight:700}
 
     /* Sections */
-    section{padding:36px 0}
+    section{padding:34px 0}
     .section-head{
       display:flex;
       align-items:flex-end;
@@ -200,44 +253,88 @@
     }
     .section-head h2{
       margin:0;
-      font-size: 26px;
-      letter-spacing:-.3px;
+      font-family: Cinzel, serif;
+      font-size: 28px;
+      letter-spacing:-.2px;
     }
     .section-head p{
       margin:0;
       color:var(--muted);
-      max-width: 60ch;
-      font-weight:600;
+      max-width: 70ch;
+      font-weight:700;
     }
 
-    /* Menu */
+    /* Catering gallery */
+    .catering-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .catering-media{
+      padding:0;
+      overflow:hidden;
+      min-height: 340px;
+    }
+    .catering-media img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .catering-copy{padding:22px}
+    .gold-line{
+      height:1px; width:100%;
+      background: linear-gradient(90deg, transparent, rgba(242,207,115,.55), transparent);
+      margin:14px 0;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      font-weight:900;
+      border-radius:999px;
+      padding:8px 12px;
+      border:1px solid rgba(242,207,115,.26);
+      background: rgba(242,207,115,.10);
+      color: rgba(255,233,180,.95);
+    }
+    .bullets{
+      margin:12px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    /* Catering packages */
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
-    .item{
+    .pkg{
       padding:18px;
+      transition: .18s ease;
     }
-    .item .top{
+    .pkg:hover{ transform: translateY(-2px); }
+    .pkg .top{
       display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
       margin-bottom:6px;
     }
-    .item h3{margin:0; font-size:16px}
-    .price{font-weight:800; color: rgba(255,255,255,.92)}
-    .desc{margin:0; color:var(--muted); font-weight:600}
+    .pkg h3{margin:0; font-size:16px}
+    .price{font-weight:900; color: rgba(255,255,255,.92)}
+    .desc{margin:0; color:var(--muted); font-weight:700}
     .tag{
       display:inline-flex; margin-top:10px;
       padding:6px 10px;
       border-radius:999px;
-      background: rgba(255,204,102,.10);
-      border:1px solid rgba(255,204,102,.22);
-      color: rgba(255,226,170,.95);
-      font-weight:800;
+      background: rgba(242,207,115,.10);
+      border:1px solid rgba(242,207,115,.22);
+      color: rgba(255,233,180,.95);
+      font-weight:900;
       font-size:12px;
     }
 
-    /* About + Reserve */
+    /* About + Inquiry */
     .split{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -245,25 +342,28 @@
       align-items:stretch;
     }
     .about, .reserve{padding:22px}
-    .about p{margin:10px 0 0; color:var(--muted); font-weight:600}
-    .about ul{margin:12px 0 0; padding-left:18px; color:var(--muted); font-weight:600}
+    .about p{margin:10px 0 0; color:var(--muted); font-weight:700}
+    .about ul{margin:12px 0 0; padding-left:18px; color:var(--muted); font-weight:700}
     .reserve form{display:grid; gap:10px; margin-top:10px}
-    .field{
-      display:grid; gap:6px;
-    }
-    label{font-size:13px; color: rgba(255,255,255,.85); font-weight:700}
+    .field{ display:grid; gap:6px; }
+    label{font-size:13px; color: rgba(255,255,255,.88); font-weight:900}
     input, select, textarea{
       width:100%;
       padding:12px 12px;
       border-radius:14px;
       border:1px solid var(--line);
-      background: rgba(0,0,0,.2);
+      background: rgba(0,0,0,.22);
       color:var(--text);
       outline:none;
+      transition: .18s ease;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(242,207,115,.38);
+      box-shadow: 0 0 0 4px rgba(242,207,115,.10);
     }
     textarea{min-height: 92px; resize: vertical}
     input::placeholder, textarea::placeholder{color: rgba(168,179,199,.75)}
-    .hint{color:var(--muted); font-weight:600; font-size:13px}
+    .hint{color:var(--muted); font-weight:700; font-size:13px}
 
     /* Contact */
     .contact-grid{
@@ -272,14 +372,11 @@
       gap:14px;
       align-items:stretch;
     }
-    .map{
-      padding:0;
-      overflow:hidden;
-    }
+    .map{ padding:0; overflow:hidden; }
     .map iframe{
       width:100%;
       height:100%;
-      min-height: 300px;
+      min-height: 320px;
       border:0;
       filter: saturate(1.05) contrast(1.05);
     }
@@ -289,19 +386,19 @@
       gap:10px;
       margin-top:10px;
       color:var(--muted);
-      font-weight:650;
+      font-weight:750;
     }
     .kv .row{
       display:flex; gap:10px; align-items:flex-start;
       padding:10px 12px;
-      border-radius:14px;
+      border-radius:16px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
     }
-    .kv strong{color: rgba(255,255,255,.92)}
+    .kv strong{color: rgba(255,255,255,.94)}
     footer{
       padding:26px 0 40px;
-      color: rgba(168,179,199,.9);
+      color: rgba(168,179,199,.92);
       border-top:1px solid var(--line);
       background: rgba(0,0,0,.12);
     }
@@ -315,6 +412,7 @@
       .contact-grid{grid-template-columns: 1fr}
       .grid-3{grid-template-columns: 1fr}
       .split{grid-template-columns: 1fr}
+      .catering-grid{grid-template-columns: 1fr}
       nav{display:none}
       .burger{display:inline-flex; align-items:center; justify-content:center}
       .brand{min-width:auto}
@@ -336,20 +434,25 @@
   <header id="header">
     <div class="wrap">
       <div class="topbar">
-        <a class="brand" href="#top" aria-label="Go to top">
+        <a class="brand" href="#top" aria-label="Gå till toppen">
           <span class="logo" aria-hidden="true"></span>
-          <span>Alkhawaja</span>
+          <span>
+            <b>LEVANT</b>
+            <small>Restaurang &amp; catering</small>
+          </span>
         </a>
 
         <nav aria-label="Primary">
-          <a href="#menu">Meny</a>
-          <a href="#about">Om</a>
+          <a href="#catering">Catering</a>
+          <a href="#paket">Paket</a>
+          <a href="#about">Om oss</a>
           <a href="#contact">Kontakt</a>
         </nav>
 
         <div class="actions">
-          <a class="btn" href="tel:+490000000000">Ring</a>
-          <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+          <a class="btn" href="tel:+46000000000">Ring</a>
+          <a class="btn primary" href="#reserve">Boka catering</a>
+          <button class="burger" id="burger" aria-label="Öppna meny" aria-expanded="false">☰</button>
         </div>
       </div>
     </div>
@@ -358,103 +461,127 @@
   <main id="top">
     <div class="wrap hero">
       <div class="hero-grid">
-        <div class="card hero-main">
-          <div class="pill"><span class="dot"></span> Säsongsbetonat medelhavskök • Mysiga kvällar</div>
-          <h1>Enkel mat, vackert tillagad.</h1>
+        <div class="card hero-main reveal">
+          <div class="pill"><span class="dot"></span> Libanesisk • Syrisk • Irakisk • Svensk husmanskost</div>
+          <h1>Restaurangkvalitet — hemma hos dig.</h1>
           <p class="lead">
-            Alkhawaja är en kvarterskrog som serverar färska, säsongsbetonade rätter, varmt bröd och utsökta viner. Drop-in är välkommet, men bord bör reserveras.
+            Slipp matlagningen idag. Allt är hemlagat med kärlek och levereras direkt till ditt bord.
+            Perfekt för fest, bjudning eller företagsevent.
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#menu">Se menyn</a>
-            <a class="btn" href="#contact">Hitta oss</a>
+            <a class="btn primary" href="#paket">Se cateringpaket</a>
+            <a class="btn" href="#contact">Kontakta oss</a>
           </div>
 
           <div class="meta" aria-label="Highlights">
-            <span>🍽️ Middag &amp; helgbrunch</span>
-            <span>🌿 Vegetarianvänligt</span>
-            <span>🔥 Öppet kök</span>
+            <span>🥗 Sallader &amp; meze</span>
+            <span>🔥 Grillspett &amp; mix</span>
+            <span>🎉 För alla tillfällen</span>
           </div>
         </div>
 
-        <div class="card hero-side">
-          <div class="photo" role="img" aria-label="Restaurant atmosphere photo"></div>
+        <div class="card hero-side reveal" style="animation-delay:.08s">
+          <div class="photo" role="img" aria-label="Levant catering"></div>
           <div class="side-row">
             <div class="mini">
-              <h3>Dagens öppettider</h3>
-              <p>17:00 – 23:00</p>
+              <h3>Snabb offert</h3>
+              <p>Svar inom 24h*</p>
             </div>
             <div class="mini">
-              <h3>Plats</h3>
-              <p>Stockholm</p>
+              <h3>Leverans</h3>
+              <p>Enkelt &amp; smidigt</p>
             </div>
           </div>
+          <div class="hint" style="margin-top:-4px;">*Demo-text — byt till er riktiga info.</div>
         </div>
       </div>
     </div>
 
-    <section id="menu">
+    <!-- Catering section using your image -->
+    <section id="catering">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>Menu</h2>
-            <p>Små tallrikar, stor smak. Byt ut dessa föremål mot dina riktiga tallrikar.</p>
+            <h2>Catering för alla tillfällen</h2>
+            <p>
+              Planerar du fest eller bjudning hemma? Låt oss ta hand om maten så att du kan fokusera på dina gäster.
+            </p>
           </div>
         </div>
 
+        <div class="catering-grid">
+          <div class="card catering-media reveal">
+            <img
+              src="WhatsApp%20Image%202026-02-10%20at%2012.51.48%281%29.jpeg"
+              alt="Levant catering för alla tillfällen">
+          </div>
+
+          <div class="card catering-copy reveal" style="animation-delay:.06s">
+            <span class="badge">✨ Hemlagat med kärlek</span>
+            <div class="gold-line"></div>
+            <p style="margin:0; color:var(--muted); font-weight:750;">
+              Vi erbjuder ett brett utbud av fantastisk mat — från fräscha sallader och meze till grillspett och
+              klassiska rätter. Anpassa efter smak, allergier och antal personer.
+            </p>
+            <ul class="bullets">
+              <li>Flexibla paket &amp; portioner</li>
+              <li>Vegetariska alternativ</li>
+              <li>Perfekt för företag &amp; privat</li>
+            </ul>
+
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#reserve">Skicka förfrågan</a>
+              <a class="btn" href="#paket">Se paket</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages (styled cards) + your 2nd image as a “menu board” -->
+    <section id="paket">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Cateringpaket</h2>
+            <p>Här är tre exempel. Byt texterna exakt efter era paket (jag har behållit strukturen).</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0; margin-bottom:14px; overflow:hidden">
+          <img
+            src="WhatsApp%20Image%202026-02-10%20at%2012.51.48.jpeg"
+            alt="Levant cateringpaket"
+            style="width:100%; height:auto; display:block; object-fit:cover; filter:saturate(1.05) contrast(1.05);">
+        </div>
+
         <div class="grid-3">
-          <div class="card item">
+          <div class="card pkg reveal">
             <div class="top">
-              <h3>Charred carrots &amp; tahini</h3>
-              <div class="price">€9</div>
+              <h3>Litet paket</h3>
+              <div class="price">300 kr / person</div>
             </div>
-            <p class="desc">Citrus, toasted seeds, fresh herbs.</p>
-            <span class="tag">Vegetarian</span>
+            <p class="desc">Upp till 4 timmar • Kycklingspett med ris eller pommes.</p>
+            <span class="tag">Sås &amp; sallad ingår</span>
           </div>
 
-          <div class="card item">
+          <div class="card pkg reveal" style="animation-delay:.05s">
             <div class="top">
-              <h3>Halloumi &amp; tomato salad</h3>
-              <div class="price">€12</div>
+              <h3>Mellanpaket</h3>
+              <div class="price">400 kr / person</div>
             </div>
-            <p class="desc">Olive oil, basil, pickled onion.</p>
-            <span class="tag">Gluten-free</span>
+            <p class="desc">Upp till 5 timmar • 1 sallad, 1 antipasti &amp; 1 meze.</p>
+            <span class="tag">Nötter &amp; chips</span>
           </div>
 
-          <div class="card item">
+          <div class="card pkg reveal" style="animation-delay:.1s">
             <div class="top">
-              <h3>Slow-braised lamb</h3>
-              <div class="price">€22</div>
+              <h3>Stort paket</h3>
+              <div class="price">600 kr / person</div>
             </div>
-            <p class="desc">Yogurt, pomegranate, warm pita.</p>
-            <span class="tag">House favorite</span>
-          </div>
-
-          <div class="card item">
-            <div class="top">
-              <h3>Seared sea bass</h3>
-              <div class="price">€24</div>
-            </div>
-            <p class="desc">Lemon butter, capers, greens.</p>
-            <span class="tag">Fresh</span>
-          </div>
-
-          <div class="card item">
-            <div class="top">
-              <h3>Truffle fries</h3>
-              <div class="price">€6</div>
-            </div>
-            <p class="desc">Parmesan, aioli, cracked pepper.</p>
-            <span class="tag">Snack</span>
-          </div>
-
-          <div class="card item">
-            <div class="top">
-              <h3>Basque cheesecake</h3>
-              <div class="price">€8</div>
-            </div>
-            <p class="desc">Burnt top, berry compote.</p>
-            <span class="tag">Dessert</span>
+            <p class="desc">Upp till 6 timmar • Salladsbuffé, ostbrickor, meze.</p>
+            <span class="tag">Frukt + tillbehör</span>
           </div>
         </div>
       </div>
@@ -463,57 +590,57 @@
     <section id="about">
       <div class="wrap">
         <div class="split">
-          <div class="card about">
+          <div class="card about reveal">
             <div class="section-head" style="margin-bottom:0;">
               <div>
-                <h2>Om</h2>
-                <p>Varm service, säsongsbetonade råvaror och en lugn atmosfär.</p>
+                <h2>Om oss</h2>
+                <p>Traditionella smaker, generösa portioner och varm service.</p>
               </div>
             </div>
             <p>
-              Vi lagar mat med lokala råvaror, olivolja och öppen eld.
-              Vår meny ändras ofta – kom förbi för en avslappnad kväll med vänner.
+              Vi lagar mat med noggrant utvalda råvaror och fokus på kvalitet. Vårt kök inspireras av Levanten
+              och kompletteras med svenska klassiker — perfekt när ni vill ha något extra.
             </p>
             <ul>
-              <li>Säsongsbetonad, varierande meny</li>
-              <li>Vegetarian &amp; glutenfria alternativ</li>
-              <li>Liten vinlista med naturliga val</li>
+              <li>Paketering för både små och stora sällskap</li>
+              <li>Allergi- och specialkost på begäran</li>
+              <li>Företagsevent • Dop • Bröllop • Hemmafester</li>
             </ul>
           </div>
 
-          <div class="card reserve" id="reserve">
+          <div class="card reserve reveal" id="reserve" style="animation-delay:.06s">
             <div class="section-head" style="margin-bottom:0;">
               <div>
-                <h2>Reservationer</h2>
-                <p>Skicka en förfrågan. Du kan koppla detta till ditt bokningssystem senare.</p>
+                <h2>Förfrågan</h2>
+                <p>Skicka en cateringförfrågan (demo-formulär).</p>
               </div>
             </div>
 
             <form id="resForm">
               <div class="field">
-                <label for="name">Name</label>
-                <input id="name" placeholder="Your name" required />
+                <label for="name">Namn</label>
+                <input id="name" placeholder="Ditt namn" required />
               </div>
 
               <div class="field">
-                <label for="people">Party size</label>
+                <label for="people">Antal personer</label>
                 <select id="people">
-                  <option>2</option><option>3</option><option>4</option>
-                  <option>5</option><option>6</option><option>7+</option>
+                  <option>10</option><option>15</option><option>20</option>
+                  <option>25</option><option>30</option><option>40</option><option>50+</option>
                 </select>
               </div>
 
               <div class="field">
-                <label for="date">Date &amp; time</label>
+                <label for="date">Datum &amp; tid</label>
                 <input id="date" type="datetime-local" required />
               </div>
 
               <div class="field">
-                <label for="notes">Notes (optional)</label>
-                <textarea id="notes" placeholder="Allergies, high chair, celebration..."></textarea>
+                <label for="notes">Önskemål (valfritt)</label>
+                <textarea id="notes" placeholder="Allergier, paket, leveransadress, tider..."></textarea>
               </div>
 
-              <button class="btn primary" type="submit">Request booking</button>
+              <button class="btn primary" type="submit">Skicka förfrågan</button>
               <div class="hint" id="formMsg" aria-live="polite"></div>
             </form>
           </div>
@@ -525,17 +652,17 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2>Contact</h2>
+            <h2>Kontakt</h2>
+            <p>Byt adress/telefon och kartan till er riktiga plats.</p>
           </div>
         </div>
 
         <div class="contact-grid">
           <div class="card map" aria-label="Map">
-            <!-- Replace this src with your own Google Maps embed link -->
             <iframe
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Berlin%20Mitte&output=embed">
+              src="https://www.google.com/maps?q=Stockholm&output=embed">
             </iframe>
           </div>
 
@@ -543,24 +670,25 @@
             <div class="kv">
               <div class="row">
                 <div>📍</div>
-                <div><strong>Adress</strong><br/>Street 12, 10115 Stockholm</div>
+                <div><strong>Adress</strong><br/>Exempelgatan 12, 111 22 Stockholm</div>
               </div>
               <div class="row">
                 <div>☎️</div>
-                <div><strong>Telefon</strong><br/><a href="tel:+4930000000">+49 30 000 000</a></div>
+                <div><strong>Telefon</strong><br/><a href="tel:+46000000000">+46 00 000 000</a></div>
               </div>
               <div class="row">
                 <div>✉️</div>
-                <div><strong>E-post</strong><br/><a href="mailto:hello@oliveandember.com">hello@oliveandember.com</a></div>
+                <div><strong>Email</strong><br/><a href="mailto:info@levant.se">info@levant.se</a></div>
               </div>
               <div class="row">
                 <div>⏰</div>
-                <div><strong>Öppettider</strong><br/>Mon–Thu 17–23 • Fri–Sat 12–24 • Sun 12–22</div>
+                <div><strong>Öppettider</strong><br/>Mån–Tor 10–20 • Fre–Lör 10–22 • Sön 12–18</div>
               </div>
             </div>
 
             <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-              <a class="btn" href="#menu">Visa meny</a>
+              <a class="btn primary" href="#reserve">Boka catering</a>
+              <a class="btn" href="#paket">Cateringpaket</a>
             </div>
           </div>
         </div>
@@ -569,10 +697,11 @@
 
     <footer>
       <div class="wrap foot">
-        <div>© <span id="year"></span>Alkhawaja. All rights reserved.</div>
+        <div>© <span id="year"></span> Levant. Alla rättigheter förbehållna.</div>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="#menu">Meny</a>
-          <a href="#about">Om</a>
+          <a href="#catering">Catering</a>
+          <a href="#paket">Paket</a>
+          <a href="#about">Om oss</a>
           <a href="#contact">Kontakt</a>
         </div>
       </div>
@@ -589,12 +718,12 @@
       burger.textContent = open ? '✕' : '☰';
     });
 
-    // Reservation form (demo)
+    // Inquiry form (demo)
     const form = document.getElementById('resForm');
     const msg = document.getElementById('formMsg');
     form?.addEventListener('submit', (e) => {
       e.preventDefault();
-      msg.textContent = "Thanks! We’ll confirm your booking by email shortly. (Demo form)";
+      msg.textContent = "Tack! Vi återkommer snart med bekräftelse. (Demo-formulär)";
       form.reset();
     });
 
